@@ -1,0 +1,56 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.29.0.0
+Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: asd crawfordc@asd.com, asdafs, LIC=7YKQD-8HDTD-34FST-RFKI3-JTC5U-LV34D
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.29.0.0
+Toolchain Path:  D:\Program Files\KEIL5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.29.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      Segger\JL2CM3.dll V2.99.36.0
+Dialog DLL:      TCM.DLL V1.36.5.0
+ 
+<h2>Project:</h2>
+F:\stm32_program\W5500EVB_MQTT_Blinker\W5500EVB_MQTT_Blinker\MDK5\W5500EVB_MQTT_Blinker.uvprojx
+Project File Date:  01/25/2021
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\Program Files\KEIL5\ARM\ARMCC\Bin'
+Build target 'W5500EVB'
+compiling transport.c...
+..\User\MQTT\transport.c(24): error:  #20: identifier "server_ip" is undefined
+  	tcpc(server_ip);
+..\User\MQTT\transport.c(25): warning:  #940-D: missing return statement at end of non-void function "transport_open" 
+  }
+..\User\MQTT\transport.c: 1 warning, 1 error
+compiling main.c...
+compiling tcpc.c...
+"..\Output\W5500EVB_MQTT_Blinker.axf" - 1 Error(s), 1 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.3.0.pack
+                Keil.STM32F1xx_DFP.2.3.0
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_W5500EVB
+  D:\Program Files\KEIL5\arm_packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+Target not created.
+Build Time Elapsed:  00:00:03
+</pre>
+</body>
+</html>

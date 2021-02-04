@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\User",
+    "\\User\\Application",
+    "\\User\\MQTT"
+  ],
+  "SelectedNode": "\\User\\MQTT\\transport.c",
+  "PreviewInSolutionExplorer": false
+}
