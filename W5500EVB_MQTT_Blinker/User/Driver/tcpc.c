@@ -31,6 +31,17 @@ uint8 tcpc( uint8 *server_ip)
 					{
 						setSn_IR(0, Sn_IR_CON);								// Sn_IR的CON位置1，通知W5500连接已建立
 					}
+
+//					if (len = getSn_RX_RSR(0) == 0)
+//					{
+
+//					}
+
+
+
+
+
+
 					// 数据回环测试程序：数据从上位机服务器发给W5500，W5500接收到数据后再回给服务器
 					len=getSn_RX_RSR(0);										// len=Socket0接收缓存中已接收和保存的数据大小
 					if(len>0)

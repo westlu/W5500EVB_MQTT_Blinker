@@ -16,7 +16,7 @@
 #include "transport.h"
 
 
-extern uint16 server_port = 1883;
+
 
 
 
