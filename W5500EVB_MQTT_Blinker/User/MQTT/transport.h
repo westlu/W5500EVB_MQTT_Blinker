@@ -14,14 +14,14 @@
  *    Ian Craggs - initial API and implementation and/or initial documentation
  *    Sergio R. Caprile - "commonalization" from prior samples and/or documentation extension
  *******************************************************************************/
-
+ #include "include.h"
 int transport_sendPacketBuffer(int sock, unsigned char* buf, int buflen);
 int transport_getdata(unsigned char* buf, int count);
 int transport_getdatanb(void *sck, unsigned char* buf, int count);
 int transport_open(char* host, int port);
 int transport_close(int sock);
 int MQTTConnectMessage(char* clientID, int keepalive, uint8 cleansession, char* username, char* password, unsigned char*buf,int buflen);
-
+int MQTTParseHeader(unsigned char *buf);
 
 
 

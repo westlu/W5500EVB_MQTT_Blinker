@@ -592,6 +592,16 @@
               <FileType>1</FileType>
               <FilePath>..\User\MQTT\transport.c</FilePath>
             </File>
+            <File>
+              <FileName>linkplatform.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\MQTT\linkplatform.c</FilePath>
+            </File>
+            <File>
+              <FileName>linkplatform.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\MQTT\linkplatform.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

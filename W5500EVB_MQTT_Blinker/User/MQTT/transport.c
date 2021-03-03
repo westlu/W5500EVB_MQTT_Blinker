@@ -151,7 +151,7 @@ void MQTTPublishMessage(char *Topic, unsigned char *msgbuf, int buflen, char *pa
 
 
 /*解析ACK报文，判断ACK报文类型*/
-int MQTTParseHeader(char *buf)
+int MQTTParseHeader(unsigned char *buf)
 {
 	int rc = -1;
 	MQTTHeader header = { 0 };

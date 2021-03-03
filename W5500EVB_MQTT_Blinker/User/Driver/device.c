@@ -87,9 +87,9 @@ void set_network(void)															// 配置初始化IP信息并打印，初始化8个Socket
 void set_default(void)															// 设置默认MAC、IP、GW、SUB、DNS
 {  
   uint8 mac[6]={0x00,0x08,0xdc,0x11,0x11,0x11};
-  uint8 lip[4]={192,168,3,150};
+  uint8 lip[4]={192,168,1,150};
   uint8 sub[4]={255,255,255,0};
-  uint8 gw[4]={192,168,3,1};
+  uint8 gw[4]={192,168,1,1};
   uint8 dns[4]={8,8,8,8};
   memcpy(ConfigMsg.lip, lip, 4);
   memcpy(ConfigMsg.sub, sub, 4);

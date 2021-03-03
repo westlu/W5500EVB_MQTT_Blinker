@@ -6,7 +6,7 @@ extern uint8 rxsize[];										// 引用外部变量，声明Socket接收缓存大小
 
 int main(void)
 {
-  uint8 server_ip[4]={192,168,3,2};			// 配置远程服务器IP地址
+  uint8 server_ip[4]={118,89,70,79};			// 配置远程服务器IP地址
 	uint16 server_port=1883;								// 配置远程服务器端口
 	
   /***** MCU时钟初始化 *****/							  
@@ -35,9 +35,9 @@ int main(void)
 	setkeepalive(0);
 	
 	printf("TCP Server IP: %d.%d.%d.%d \r\n",server_ip[0],server_ip[1],server_ip[2],server_ip[3]);
-  printf("TCP Server Port: %d \r\n",server_port);	
+	printf("TCP Server Port: %d \r\n",server_port);	
 	printf("W5500 Init Complete!\r\n");
-  printf("Start TCP Client Test!\r\n"); 
+	printf("Start MQTT Client Test!\r\n"); 
 
 	while(1)																				
 	{	

@@ -9,7 +9,14 @@
       "installRoot": "${projectDir}\\out\\install\\${name}",
       "cmakeCommandArgs": "",
       "buildCommandArgs": "",
-      "ctestCommandArgs": ""
+      "ctestCommandArgs": "",
+      "variables": [
+        {
+          "name": "CMAKE_INSTALL_PREFIX",
+          "value": "F:/github_R/W5500EVB_MQTT_Blinker/W5500EVB_MQTT_Blinker/User/MQTT/out/install/x64-Debug (默认值)",
+          "type": "PATH"
+        }
+      ]
     }
   ]
 }
