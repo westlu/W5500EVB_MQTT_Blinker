@@ -1,7 +1,7 @@
 #include "include.h"
 
 
-uint8 SUB_FLAG = 1;
+
 uint8 PUB_FLAG = 1;
 
 	/*****
@@ -18,10 +18,19 @@ uint8 PUB_FLAG = 1;
 uint8 tcpc( uint8 *server_ip)
 {
 		uint8  CONNECT_FLAG = 1;
-		uint16 test_flag = 0;
+		uint8 SUB_FLAG = 1;
+
+
+		uint16  test_flag = 0;
 		uint16	len=0;
 		uint8	buffer[1024];												// 定义一个2KB的数组，用来存放Socket的通信数据
-		uint8 buflen = 0;
+		int   buflen = sizeof(buffer);
+		uint8   datalen = 0;
+		uint8 req_qos = 0;
+		char *TOPIC = { "/device/41A7E676A8DL98SZNS2AP7AB/r" };
+		uint8 recvBuflen = 0;
+
+
 		uint16	server_port=1883;								// 配置远程服务器端口
 		uint16	local_port=6000;									// 初始化一个本地端口
 		uint8	len_flag = 0;
@@ -53,46 +62,72 @@ uint8 tcpc( uint8 *server_ip)
 							if (CONNECT_FLAG == 1)
 							{
 								printf("send mqtt_connect\r\n");
-								buflen = MQTTConnectMessage("41A7E676A8DL98SZNS2AP7AB", 60, 1,"FWiC2NxKbg9hdyRzPdaHPHUHxb" ,
-									"QRqTydZSPvPHhVkhzfTGpyyqPdmBgQcn", buffer, sizeof(buffer));
-								//printf("%s\r\n", buffer);
-								printf("%d\r\n", strlen(((char *) buffer)));
+								datalen = MQTTConnectMessage("41A7E676A8DL98SZNS2AP7AB", 60, 1,"FWiC2NxKbg9hdyRzPdaHPHUHxb" ,
+									"QRqTydZSPvPHhVkhzfTGpyyqPdmBgQcn", buffer, buflen);
 								CONNECT_FLAG = 0;
-								send(TCP_SOCKET, buffer, buflen);
+								send(TCP_SOCKET, buffer, datalen);
 								//Delay_s(2);
-								printf("i've send\r\n");
 								while ( (len = getSn_RX_RSR(0)) == 0)
 								{
 								
 									Delay_s(2);
-									send(TCP_SOCKET, buffer, buflen);
+									printf("i'm waitting done");
 									test_flag = getSn_SR(0);
 									printf("len is %d\r\n", len);
 									printf("socket statu is: %d\r\n", test_flag);
 								}
 								
-								memset(buffer, 0, sizeof(buffer));
-								
-								recv(TCP_SOCKET, buffer, sizeof(buffer));
+								memset(buffer, 0, buflen);
+								printf("recv len is :%d ", len);
+								recv(TCP_SOCKET, buffer, len);
 								printf("%s\r\n", buffer);
 								while (MQTTParseHeader(buffer) != CONNACK)
 								{
-									printf("It's connecting!!!");
-									printf("connect ok");
+									printf("waitting for CONNACK!!!");
 								}
-								printf("connect ok");
-								Delay_s(5);
+								
+
+
+								//sub
+
+							if(SUB_FLAG == 1)
+							{
+
+
+								printf("%s\r\n", buffer);
+								memset(buffer, 0, buflen);
+								datalen = MQTTSubscribeMessage(TOPIC, buffer, buflen, req_qos);
+								send(TCP_SOCKET, buffer, datalen);
+
+								while((len = getSn_RX_RSR(0)) == 0)
+								{
+									Delay_s(2);
+									printf("i'm waitting done - Sub");
+								}
+
+								memset(buffer, 0, buflen);
+								recv(TCP_SOCKET, buffer, len);
+								while (MQTTParseHeader(buffer) != SUBACK)
+								{
+									printf("waitting for SUBACK!!!");
+								}
+								while(1)
+                {
+								   Delay_s(2);
+									 printf("subtopic message");
+								}
+
+
+							}
+
+								/**/
+							printf("this is the rec buf:%s",buffer);
+							Delay_s(5);
 							}
 							break;
 
 						case Sn_RX_RSR_1:
-								recv(TCP_SOCKET, buffer, sizeof(buffer));
-								printf("%s\r\n", buffer);
-								if (MQTTParseHeader(buffer) == CONNACK)
-								{
-									printf("It's con ACKKKKKKKKKKKKKKKKKKKK");
-									printf("connect ok");
-								}
+                 printf("Sn_RX_RSR_1");
 							break;
 
 						default:

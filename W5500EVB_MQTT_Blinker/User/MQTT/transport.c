@@ -121,16 +121,16 @@ int MQTTConnectMessage(char* clientID, int keepalive, uint8 cleansession, char* 
 
 
 /*¶©ÔÄ*/
-void MQTTSubscribeMessage(char* Topic, unsigned char* msgbuf, int buflen)
+int MQTTSubscribeMessage(char* Topic, unsigned char* msgbuf, int buflen,int req_qos)
 {
+	int rc = -1;
 	int msgid = 1;
-	int req_qos = 0;
 	unsigned char topic[100];
 	MQTTString topicString = MQTTString_initializer;
 	memcpy(topic, Topic, strlen(Topic));
 	topicString.cstring = (char*)topic;
-	MQTTSerialize_subscribe(msgbuf, buflen, 0, msgid, 1, &topicString, &req_qos);
-	return;
+	rc = MQTTSerialize_subscribe(msgbuf, buflen, 0, msgid, 1, &topicString, &req_qos);
+	return rc;
 }
 
 

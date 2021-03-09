@@ -21,6 +21,7 @@ int transport_getdatanb(void *sck, unsigned char* buf, int count);
 int transport_open(char* host, int port);
 int transport_close(int sock);
 int MQTTConnectMessage(char* clientID, int keepalive, uint8 cleansession, char* username, char* password, unsigned char*buf,int buflen);
+int MQTTSubscribeMessage(char* Topic, unsigned char* msgbuf, int buflen, int req_qos);
 int MQTTParseHeader(unsigned char *buf);
 
 
