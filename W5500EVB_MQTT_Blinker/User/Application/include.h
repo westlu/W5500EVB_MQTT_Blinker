@@ -10,12 +10,13 @@
 #include "string.h"
 #include "tcpc.h"
 #include "types.h"
+#include "cJSON.h"
 #include "StackTrace.h"
 #include "MQTTPacket.h"
 
 #include "transport.h"
 #include "linkplatform.h"
-
+#include "cjson_test.h"
 
 
 

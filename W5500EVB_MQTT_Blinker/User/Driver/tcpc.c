@@ -23,12 +23,15 @@ uint8 tcpc( uint8 *server_ip)
 
 		uint16  test_flag = 0;
 		uint16	len=0;
-		uint8	buffer[1024];												// 定义一个2KB的数组，用来存放Socket的通信数据
-		int   buflen = sizeof(buffer);
+		uint8	  buffer[1024];												// 定义一个2KB的数组，用来存放Socket的通信数据
+		int     buflen = sizeof(buffer);
 		uint8   datalen = 0;
-		uint8 req_qos = 0;
-		char *TOPIC = { "/device/41A7E676A8DL98SZNS2AP7AB/r" };
-		uint8 recvBuflen = 0;
+		uint8   req_qos = 0;
+		char*   payload;
+	  int     payloadlen = strlen(payload);
+		char    *TOPIC = { "/device/41A7E676A8DL98SZNS2AP7AB/r" };
+		MQTTString topicString = MQTTString_initializer;
+		uint8   recvBuflen = 0;
 
 
 		uint16	server_port=1883;								// 配置远程服务器端口
@@ -62,8 +65,8 @@ uint8 tcpc( uint8 *server_ip)
 							if (CONNECT_FLAG == 1)
 							{
 								printf("send mqtt_connect\r\n");
-								datalen = MQTTConnectMessage("41A7E676A8DL98SZNS2AP7AB", 60, 1,"FWiC2NxKbg9hdyRzPdaHPHUHxb" ,
-									"QRqTydZSPvPHhVkhzfTGpyyqPdmBgQcn", buffer, buflen);
+								datalen = MQTTConnectMessage("41A7E676A8DL98SZNS2AP7AB", 60, 1,"4wX7xaFB2su8tsDjC7u7GciLzn" ,
+									"dqiSorEim4NTmNqYcfiqeoryckjGCJyQ", buffer, buflen);
 								CONNECT_FLAG = 0;
 								send(TCP_SOCKET, buffer, datalen);
 								//Delay_s(2);
@@ -111,10 +114,33 @@ uint8 tcpc( uint8 *server_ip)
 								{
 									printf("waitting for SUBACK!!!");
 								}
+
+								topicString.cstring = "/device/41A7E676A8DL98SZNS2AP7AB/s";
+								payload = MQTTJSON_Online("2146c54356de11eb81bb5254");
+								payloadlen = strlen(payload);
 								while(1)
                 {
-								   Delay_s(2);
-									 printf("subtopic message");
+									if (MQTTPacket_read(buffer, buflen, transport_getdata) == PUBLISH)
+									{
+										unsigned char dup;
+										int qos;
+										unsigned char retained;
+										unsigned short msgid;
+										int payloadlen_in;
+										unsigned char* payload_in;
+										int rc;
+										MQTTString receivedTopic;									
+										rc = MQTTDeserialize_publish(&dup, &qos, &retained, &msgid, &receivedTopic,
+											&payload_in, &payloadlen_in, buffer, buflen);
+										printf("message arrived %.*s\n", payloadlen_in, payload_in);
+									}
+
+									printf("publishing reading\n");
+									
+									printf("payload be sent : %s\r\n", payload);
+									len = MQTTSerialize_publish(buffer, buflen, 0, 0, 0, 0, topicString, (unsigned char*)payload, payloadlen);
+									send(TCP_SOCKET, buffer, len);
+									Delay_s(3);
 								}
 
 

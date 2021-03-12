@@ -1,6 +1,7 @@
 #ifndef _INCLUDE_H_
 #define _INCLUDE_H_
 
+#include <string.h>
 #include "usart.h"
 #include "device.h"
 #include "spi2.h"
@@ -8,7 +9,9 @@
 #include "socket.h"
 #include "w5500.h"
 #include "dns.h"
-#include <string.h>
 
+#include "MQTTPacket.h"
+#include "transport.h"
+#include "tcp.h"
 #endif
 

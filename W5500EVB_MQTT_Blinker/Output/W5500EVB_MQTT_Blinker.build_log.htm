@@ -1,0 +1,57 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.29.0.0
+Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: asd crawfordc@asd.com, asdafs, LIC=7YKQD-8HDTD-34FST-RFKI3-JTC5U-LV34D
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.29.0.0
+Toolchain Path:  D:\Program Files\KEIL5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.29.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      Segger\JL2CM3.dll V2.99.36.0
+Dialog DLL:      TCM.DLL V1.36.5.0
+ 
+<h2>Project:</h2>
+F:\github_R\W5500EVB_MQTT_Blinker\W5500EVB_MQTT_Blinker\MDK5\W5500EVB_MQTT_Blinker.uvprojx
+Project File Date:  03/10/2021
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\Program Files\KEIL5\ARM\ARMCC\Bin'
+Build target 'W5500EVB'
+compiling tcpc.c...
+..\User\Driver\tcpc.c(131): warning:  #550-D: variable "rc"  was set but never used
+  										int rc;
+..\User\Driver\tcpc.c(34): warning:  #177-D: variable "recvBuflen"  was declared but never referenced
+  		uint8   recvBuflen = 0;
+..\User\Driver\tcpc.c: 2 warnings, 0 errors
+linking...
+Program Size: Code=17408 RO-data=488 RW-data=80 ZI-data=5856  
+FromELF: creating hex file...
+After Build - User command #1: fromelf.exe ..\Output\W5500EVB_MQTT_Blinker.axf --vhx --8x1 --output *.hex;fromelf --bin -o "..\Output\W5500EVB_MQTT_Blinker.bin" "..\Output\W5500EVB_MQTT_Blinker.axf"
+"..\Output\W5500EVB_MQTT_Blinker.axf" - 0 Error(s), 2 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.3.0.pack
+                Keil.STM32F1xx_DFP.2.3.0
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_W5500EVB
+  D:\Program Files\KEIL5\arm_packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+Build Time Elapsed:  00:00:02
+</pre>
+</body>
+</html>

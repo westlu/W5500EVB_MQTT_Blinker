@@ -532,6 +532,16 @@
               <FileType>1</FileType>
               <FilePath>..\User\Driver\tcpc.c</FilePath>
             </File>
+            <File>
+              <FileName>cjson_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Driver\cjson_test.c</FilePath>
+            </File>
+            <File>
+              <FileName>cjson_test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\Driver\cjson_test.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -601,6 +611,11 @@
               <FileName>linkplatform.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\User\MQTT\linkplatform.h</FilePath>
+            </File>
+            <File>
+              <FileName>cJSON.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\MQTT\cJSON.c</FilePath>
             </File>
           </Files>
         </Group>

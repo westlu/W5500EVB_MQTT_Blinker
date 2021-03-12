@@ -6,6 +6,6 @@
     "\\User\\Driver",
     "\\User\\MQTT"
   ],
-  "SelectedNode": "\\User\\MQTT\\transport.c",
+  "SelectedNode": "\\User\\Driver\\cjson_test.h",
   "PreviewInSolutionExplorer": false
 }

@@ -21,5 +21,8 @@ eg:
 }
 
 
+"{"toDevice":"2146c54356de11eb81bb5254","data":{"state":"online"}}"
 
-
+关于cJSON在keil项目中使用出现打印为0或乱码原因 -> 还通过wireshark发现拼接后发送的JSON数据并不是拼接完的数据，而是只发出去了一部分：
+1.mcu分配堆内存不够
+2.
