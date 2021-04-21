@@ -7,20 +7,23 @@ struct DATA
 {
 	char* getState;
 };
+//
+//typedef struct
+//{
+//	char* fromDevice;
+//	char* getState;
+//	char* led;
+//
+//}blinker_data;
 
-typedef struct
+ enum jsonMsg
 {
-	char* fromDevice;
-	char* getState;
-	struct DATA data;
-}blinker_data;
-
-
-
+	fromDeviceNULL, getState, btnLed
+};
 
 char* MQTTJSON_Online(char* toDevice);
-int MQTTParseJSON(char *payload, blinker_data recv_data);
-
+int MQTTParseJSON(char* fromDevice);
+char* MQTTParseJSON_GetDevice(char* fromDevice);
 
 
 

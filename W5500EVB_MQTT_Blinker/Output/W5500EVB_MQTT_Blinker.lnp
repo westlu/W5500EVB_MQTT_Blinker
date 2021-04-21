@@ -4,6 +4,7 @@
 "..\output\stm32f10x_spi.o"
 "..\output\stm32f10x_usart.o"
 "..\output\misc.o"
+"..\output\stm32f10x_tim.o"
 "..\output\core_cm3.o"
 "..\output\system_stm32f10x.o"
 "..\output\startup_stm32f10x_hd.o"
@@ -17,6 +18,7 @@
 "..\output\w5500.o"
 "..\output\tcpc.o"
 "..\output\cjson_test.o"
+"..\output\timer.o"
 "..\output\mqttconnectclient.o"
 "..\output\mqttconnectserver.o"
 "..\output\mqttdeserializepublish.o"
@@ -28,7 +30,6 @@
 "..\output\mqttunsubscribeclient.o"
 "..\output\mqttunsubscribeserver.o"
 "..\output\transport.o"
-"..\output\linkplatform.o"
 "..\output\cjson.o"
 --library_type=microlib --strict --scatter "..\Output\W5500EVB_MQTT_Blinker.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols

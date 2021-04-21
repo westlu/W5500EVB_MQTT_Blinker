@@ -32,6 +32,8 @@
 ..\output\linkplatform.o: ..\STM32XX_Driver\inc\misc.h
 ..\output\linkplatform.o: D:\Program Files\KEIL5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\output\linkplatform.o: ..\User\Application\types.h
+..\output\linkplatform.o: ..\User\Driver\timer.h
+..\output\linkplatform.o: ..\User\Application\include.h
 ..\output\linkplatform.o: ..\User\Driver\device.h
 ..\output\linkplatform.o: ..\User\Driver\spi2.h
 ..\output\linkplatform.o: ..\User\Driver\ult.h
@@ -39,7 +41,6 @@
 ..\output\linkplatform.o: ..\User\Driver\w5500.h
 ..\output\linkplatform.o: D:\Program Files\KEIL5\ARM\ARMCC\Bin\..\include\string.h
 ..\output\linkplatform.o: ..\User\Driver\tcpc.h
-..\output\linkplatform.o: ..\User\Application\include.h
 ..\output\linkplatform.o: ..\User\MQTT\cJSON.h
 ..\output\linkplatform.o: D:\Program Files\KEIL5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\output\linkplatform.o: ..\User\MQTT\StackTrace.h

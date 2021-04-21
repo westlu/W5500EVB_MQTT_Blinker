@@ -2,6 +2,7 @@
 #define _INCLUDE_H_
 
 #include "usart.h"
+#include "timer.h"
 #include "device.h"
 #include "spi2.h"
 #include "ult.h"

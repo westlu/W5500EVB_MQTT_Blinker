@@ -32,6 +32,8 @@
 ..\output\cjson_test.o: ..\STM32XX_Driver\inc\misc.h
 ..\output\cjson_test.o: D:\Program Files\KEIL5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\output\cjson_test.o: ..\User\Application\types.h
+..\output\cjson_test.o: ..\User\Driver\timer.h
+..\output\cjson_test.o: ..\User\Application\include.h
 ..\output\cjson_test.o: ..\User\Driver\device.h
 ..\output\cjson_test.o: ..\User\Driver\spi2.h
 ..\output\cjson_test.o: ..\User\Driver\ult.h
@@ -39,7 +41,6 @@
 ..\output\cjson_test.o: ..\User\Driver\w5500.h
 ..\output\cjson_test.o: D:\Program Files\KEIL5\ARM\ARMCC\Bin\..\include\string.h
 ..\output\cjson_test.o: ..\User\Driver\tcpc.h
-..\output\cjson_test.o: ..\User\Application\include.h
 ..\output\cjson_test.o: ..\User\MQTT\cJSON.h
 ..\output\cjson_test.o: D:\Program Files\KEIL5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\output\cjson_test.o: ..\User\MQTT\StackTrace.h

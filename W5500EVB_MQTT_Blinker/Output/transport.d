@@ -32,6 +32,8 @@
 ..\output\transport.o: ..\STM32XX_Driver\inc\misc.h
 ..\output\transport.o: D:\Program Files\KEIL5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\output\transport.o: ..\User\Application\types.h
+..\output\transport.o: ..\User\Driver\timer.h
+..\output\transport.o: ..\User\Application\include.h
 ..\output\transport.o: ..\User\Driver\device.h
 ..\output\transport.o: ..\User\Driver\spi2.h
 ..\output\transport.o: ..\User\Driver\ult.h
@@ -39,7 +41,6 @@
 ..\output\transport.o: ..\User\Driver\w5500.h
 ..\output\transport.o: D:\Program Files\KEIL5\ARM\ARMCC\Bin\..\include\string.h
 ..\output\transport.o: ..\User\Driver\tcpc.h
-..\output\transport.o: ..\User\Application\include.h
 ..\output\transport.o: ..\User\MQTT\cJSON.h
 ..\output\transport.o: D:\Program Files\KEIL5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\output\transport.o: ..\User\MQTT\StackTrace.h

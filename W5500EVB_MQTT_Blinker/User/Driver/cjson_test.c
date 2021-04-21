@@ -18,12 +18,14 @@ char* MQTTJSON_Online( char* toDevice)
 }
 
 
-int MQTTParseJSON(char *payload_in, blinker_data recv_data)
+int MQTTParseJSON(char* fromDevice)
 {
 	cJSON* root = NULL;
+	cJSON* object = NULL;
 	cJSON* item = NULL;
 	cJSON* fromDevice_item = NULL;
-	root = cJSON_Parse(payload_in);
+	
+	root = cJSON_Parse(fromDevice);
 
 	if (!root)
 	{
@@ -38,19 +40,33 @@ int MQTTParseJSON(char *payload_in, blinker_data recv_data)
 			printf("no fromDevice");
 			return 0;
 		}
-		memcpy(recv_data.fromDevice, fromDevice_item->valuestring, strlen(fromDevice_item->valuestring));
-
-
-		cJSON* object = cJSON_GetObjectItem(root, "data");
-		item = cJSON_GetObjectItem(object, "getState");
-		memcpy(recv_data.getState, item->valuestring, strlen(item->valuestring));
+		
+		object = cJSON_GetObjectItem(root, "data");
+		if ((item = cJSON_GetObjectItem(object, "btnled")) != NULL)
+		{
+			return 2;
+		}
+		//memcpy(recv_data.getState, item->valuestring, strlen(item->valuestring));
 
 	}
 	return 1;
 }
 
 
-
+char* MQTTParseJSON_GetDevice(char* fromDevice)
+{
+	cJSON* root = NULL;
+	cJSON* fromDevice_item = NULL;
+	root = cJSON_Parse(fromDevice);
+	fromDevice_item = cJSON_GetObjectItem(root, "fromDevice");
+	
+	if (fromDevice == NULL)
+	{
+		return 0;
+	}
+	//valuestring是键值对的值，string是键
+	return fromDevice_item->valuestring;
+}
 
 
 

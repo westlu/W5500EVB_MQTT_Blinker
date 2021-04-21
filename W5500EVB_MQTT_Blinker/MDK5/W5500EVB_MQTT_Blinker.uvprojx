@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\STM32XX_Driver\inc;..\System;..\User\Driver;..\User\Application;..\User\MQTT</IncludePath>
+              <IncludePath>..\STM32XX_Driver\inc;..\System;..\User\Driver;..\User\Application;..\User\MQTT;..\STM32XX_Driver\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -406,6 +406,11 @@
               <FileName>misc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\STM32XX_Driver\src\misc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_tim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\STM32XX_Driver\src\stm32f10x_tim.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -542,6 +547,16 @@
               <FileType>5</FileType>
               <FilePath>..\User\Driver\cjson_test.h</FilePath>
             </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Driver\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\Driver\timer.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -601,16 +616,6 @@
               <FileName>transport.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\MQTT\transport.c</FilePath>
-            </File>
-            <File>
-              <FileName>linkplatform.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\User\MQTT\linkplatform.c</FilePath>
-            </File>
-            <File>
-              <FileName>linkplatform.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\User\MQTT\linkplatform.h</FilePath>
             </File>
             <File>
               <FileName>cJSON.c</FileName>
