@@ -14,14 +14,12 @@
 		0x22		SOCK_UDP
 	*****/
 
-uint8  CONNECT_FLAG = 1;
+uint8 CONNECT_FLAG = 1;
 uint8 SUB_FLAG = 1;
 uint8 count = 0;
 
 uint8 tcpc( uint8 *server_ip)
 {
-
-
 
 		uint16  test_flag = 0;
 		uint16	len=0;
@@ -54,11 +52,12 @@ uint8 tcpc( uint8 *server_ip)
 					
 					if ((len = getSn_RX_RSR(TCP_SOCKET)) == 0)
 					{
+						//connect
 						if (CONNECT_FLAG == 1)
 						{
 							LOG("send mqtt_connect\r\n");
 							
-							datalen = MQTTConnectMessage("41A7E676A8DL98SZNS2AP7AB", 60, 1, "BnDyekdeMfhXpwBUZS7CXUk2Vr",
+							datalen = MQTTConnectMessage("41A7E676A8DL98SZNS2AP7AB", 60, 1, "BnDyekdeMfhXpwBUZS7CXUk2Vr", //拼接连接报文
 							"Mk4uKHLrkLxdtQYQCAxBmnGnzuJHPdZY", buffer, buflen);
 							CONNECT_FLAG = 0;
 							send(TCP_SOCKET, buffer, datalen);
@@ -75,23 +74,23 @@ uint8 tcpc( uint8 *server_ip)
 								LOG("waitting for CONNACK!!!");
 							}
 						}
-						//sub
-
+						
+						//subscribe
 						if (SUB_FLAG == 1)
 						{
-							//发送subscribe包，接受订阅的消息
+							
 							memset(buffer, 0, buflen);
-							datalen = MQTTSubscribeMessage(TOPIC, buffer, buflen, req_qos);
+							datalen = MQTTSubscribeMessage(TOPIC, buffer, buflen, req_qos);   //发送subscribe包，接受订阅的消息
 							send(TCP_SOCKET, buffer, datalen);
 							SUB_FLAG = 0;
-							while ((len = getSn_RX_RSR(0)) == 0)
+							while ((len = getSn_RX_RSR(0)) == 0)  //等待接收
 							{
 								LOG("i'm waitting done - Sub");
 							}
 
 							memset(buffer, 0, buflen);
 							recv(TCP_SOCKET, buffer, len);
-							while (MQTTParseHeader(buffer) != SUBACK)
+							while (MQTTParseHeader(buffer) != SUBACK)  //判断是不是suback
 							{
 								LOG("waitting for SUBACK!!!");
 							}
@@ -99,7 +98,7 @@ uint8 tcpc( uint8 *server_ip)
 
 							topicString.cstring = "/device/41A7E676A8DL98SZNS2AP7AB/s";
 
-							payload = MQTTJSON_Online("2146c54356de11eb81bb5254");
+							payload = MQTTJSON_Online("2146c54356de11eb81bb5254"); //json格式
 							payloadlen = strlen(payload);
 							TIM_Cmd(TIM3, ENABLE);
 							while(1)
@@ -117,7 +116,7 @@ uint8 tcpc( uint8 *server_ip)
 										unsigned char* payload_in;
 										int rc;
 										MQTTString receivedTopic;
-										rc = MQTTDeserialize_publish(&dup, &qos, &retained, &msgid, &receivedTopic,
+										rc = MQTTDeserialize_publish(&dup, &qos, &retained, &msgid, &receivedTopic,  //解析报文
 										&payload_in, &payloadlen_in, buffer, buflen);
 										printf("message arrived %.*s\r\n", payloadlen_in, payload_in);
 										//									memcpy(fromDevice,payload_in,payloadlen_in);
@@ -127,8 +126,8 @@ uint8 tcpc( uint8 *server_ip)
 									}
 								}
 
-
-								if(count > 4)
+								//blink平台发送在线报文（相当于ping）
+								if(count > 4)  
 								{
 									LOG("payload be sent : %s\r\n", payload);
 									len = MQTTSerialize_publish(buffer, buflen, 0, 0, 0, 0, topicString, (unsigned char*)payload, payloadlen);

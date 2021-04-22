@@ -3,9 +3,8 @@
     "",
     "\\User",
     "\\User\\Application",
-    "\\User\\Driver",
     "\\User\\MQTT"
   ],
-  "SelectedNode": "\\Readme.txt",
+  "SelectedNode": "\\User\\MQTT\\transport.c",
   "PreviewInSolutionExplorer": false
 }

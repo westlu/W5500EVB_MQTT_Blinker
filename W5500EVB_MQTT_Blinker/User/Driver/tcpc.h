@@ -11,7 +11,7 @@ extern uint8 count;
 //#define DEBUG
 
 
-
+//µ÷ÊÔÓÃ
 #ifdef DEBUG
 #define LOG(format,args...)  printf(format,##args)
 #else
